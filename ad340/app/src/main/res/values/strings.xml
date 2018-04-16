@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mike Leon, First App</string>
+    <string name="intro">Welcome to my first app ever! Below is info about me</string>
+    <string name="facts">I have two dogs, a boston terrier and a yorkie terrier mix named Oreo and Rocky
+                            \n
+                            \nI have a lovely wife named Boyu
+                            \n
+                            \nI work for Zeek\'s Pizza as a delivery driver and love getting free pizza!
+                            \n
+                            \nI hope to one day become a developer, I am currently leaning towards web but if mobile is fun I may just do that!
+                            \n
+                            \nI love video games and am currently playing Farcry 5</string>
+    <string name="pizza">Pizza</string>
+</resources>
