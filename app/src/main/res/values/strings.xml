@@ -11,5 +11,8 @@
                             \n
                             \nI love video games and am currently playing Farcry 5</string>
     <string name="pizza">Pizza</string>
-    <string name ="githubtest">Test</string>
+    <string name="githubtest">Test</string>
+    <string name="type_something_here">Type something here!</string>
+    <string name="submit">Submit</string>
+    <string name="submit_some_android_string_paste_as_plain_text">Submit something</string>
 </resources>
