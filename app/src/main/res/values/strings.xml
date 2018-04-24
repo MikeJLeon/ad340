@@ -15,4 +15,8 @@
     <string name="type_something_here">Type something here!</string>
     <string name="submit">Submit</string>
     <string name="submit_some_android_string_paste_as_plain_text">Submit something</string>
+    <string name="list">list</string>
+    <string name="toast1">Toast1</string>
+    <string name="toast2">Toast2</string>
+    <string name="toast3">Toast3</string>
 </resources>
