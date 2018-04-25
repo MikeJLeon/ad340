@@ -20,8 +20,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<String> year;
     ArrayList<String> summary;
     Context context;
-    View view1;
-    ViewHolder viewHolder1;
     TextView textView;
 
     public RecyclerViewAdapter(Context context1,ArrayList<String> t, ArrayList<String> i, ArrayList<String> y, ArrayList<String> d, ArrayList<String> s)
@@ -52,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    @Override
+    @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items, parent, false);
         ViewHolder holder = new ViewHolder(view);
