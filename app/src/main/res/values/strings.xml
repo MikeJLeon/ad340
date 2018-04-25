@@ -19,4 +19,9 @@
     <string name="toast1">Toast1</string>
     <string name="toast2">Toast2</string>
     <string name="toast3">Toast3</string>
+    <string name="zombie_movie_poster">Zombie movie poster</string>
+    <string name="test">test</string>
+    <string name="test2">test2</string>
+    <string name="test3">test3</string>
+    <string name="test4">test4</string>
 </resources>

@@ -46,6 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(v);
 
             listTitle = itemView.findViewById(R.id.title);
+            System.out.println(listTitle);
             listYear = itemView.findViewById(R.id.year);
             parentLayout = itemView.findViewById(R.id.parentLayout);
         }
@@ -53,25 +54,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position){
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position){
         System.out.println(title.get(position));
         holder.listTitle.setText(title.get(position));
         holder.listYear.setText(year.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View view) {
+                ViewHolder v = holder;
                 Intent intent = new Intent(context, listDetails.class);
-                intent.putExtra("detail_title", title.get(position));
-                intent.putExtra("detail_year", year.get(position));
-                intent.putExtra("detail_director", director.get(position));
-                intent.putExtra("detail_img", img.get(position));
-                intent.putExtra("detail_summary", summary.get(position));
+                intent.putExtra("detail_title", title.get(v.getAdapterPosition()));
+                intent.putExtra("detail_year", year.get(v.getAdapterPosition()));
+                intent.putExtra("detail_director", director.get(v.getAdapterPosition()));
+                intent.putExtra("detail_img", img.get(v.getAdapterPosition()));
+                intent.putExtra("detail_summary", summary.get(v.getAdapterPosition()));
                 context.startActivity(intent);
             }
         });
