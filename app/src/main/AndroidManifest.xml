@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".submit" />
-        <activity android:name=".list"></activity>
+        <activity android:name=".list" />
+        <activity android:name=".listDetails"></activity>
     </application>
 
 </manifest>

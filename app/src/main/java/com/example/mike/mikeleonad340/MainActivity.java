@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
-
+    public void movieList(View view) {
+        Intent intent = new Intent(this, list.class);
+        startActivity(intent);
+    }
     public void toast1(View view){
         Context context = getApplicationContext();
         String text = "Sup";
