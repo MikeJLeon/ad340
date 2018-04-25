@@ -7,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TextView listTitle;
         public TextView listYear;
+        public ImageView tinyImg;
         RelativeLayout parentLayout;
 
         public ViewHolder(View v){
@@ -44,8 +48,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(v);
 
             listTitle = itemView.findViewById(R.id.title);
-            System.out.println(listTitle);
             listYear = itemView.findViewById(R.id.year);
+            tinyImg = itemView.findViewById(R.id.zTiny);
             parentLayout = itemView.findViewById(R.id.parentLayout);
         }
     }
@@ -62,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         System.out.println(title.get(position));
         holder.listTitle.setText(title.get(position));
         holder.listYear.setText(year.get(position));
+        Glide.with(context).asBitmap().load(img.get(position)).into(holder.tinyImg);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener(){
             @Override
