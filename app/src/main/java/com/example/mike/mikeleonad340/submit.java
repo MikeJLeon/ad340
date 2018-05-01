@@ -1,5 +1,6 @@
 package com.example.mike.mikeleonad340;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -19,6 +20,15 @@ public class submit extends AppCompatActivity {
         TextView output = findViewById(R.id.output);
         output.setText(input);
         Log.d(TAG, "Output activity created");
+
+        android.support.v7.widget.Toolbar mToolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setTitle("Display Message");
+        mToolBar.setTitleTextColor(Color.WHITE);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
     protected void onStart(){
         super.onStart();
