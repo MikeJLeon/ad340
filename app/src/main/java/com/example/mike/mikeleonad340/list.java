@@ -67,5 +67,19 @@ public class list extends AppCompatActivity {
         recyclerViewAdapter = new RecyclerViewAdapter(context, title, img, years, directors, summary);
 
         recyclerView.setAdapter(recyclerViewAdapter);
+
+        android.support.v7.widget.Toolbar mToolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setTitle("Zombie Movie List");
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
