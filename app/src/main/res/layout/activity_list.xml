@@ -15,7 +15,9 @@
         android:clipToPadding="false"
         android:paddingTop="?attr/actionBarSize"
         android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

@@ -26,8 +26,11 @@
     <string name="test4">test4</string>
     <string name="title">title</string>
     <string name="year">year</string>
-    <string name="menu_action_setting">setting</string>
+    <string name="menu_action_setting">Settings</string>
     <string name="about_content">This is my first app. It showcases various techniques I have learned / researched and plan on continuing my education and adding more and more types of code to this application.</string>
     <string name="menu_action_about">About</string>
     <string name="menu_action_movies">Movies</string>
+    <string name="openDescription">Opens Nav Drawer</string>
+    <string name="closeDescription">Closes Nav Drawer</string>
+    <string name="navigation">Navigation</string>
 </resources>

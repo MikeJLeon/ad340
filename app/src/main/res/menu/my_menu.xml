@@ -6,15 +6,6 @@
         android:id="@+id/action_setting"
         android:icon="@drawable/ic_back"
         android:title="@string/menu_action_setting"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_about"
-        android:title="@string/menu_action_about"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_movies"
-        android:title="@string/menu_action_movies"
-        app:showAsAction="never" />
 </menu>

@@ -3,6 +3,11 @@ package com.example.mike.mikeleonad340;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,7 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static final String EXTRA_MESSAGE = "com.example.mike.MESSAGE";
 
 
@@ -22,8 +27,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar mToolBar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
-    }
 
+        DrawerLayout drawer = findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, mToolBar, R.string.openDescription, R.string.closeDescription);
+
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        Intent intent;
+        switch (id) {
+            case R.id.action_about:
+                intent = new Intent(this, about.class);
+                startActivity(intent);
+                break;
+            case R.id.action_movies:
+                intent = new Intent(this, list.class);
+                startActivity(intent);
+                break;
+            case R.id.action_setting:
+                Toast.makeText(MainActivity.this,
+                        "Settings", Toast.LENGTH_SHORT).show();
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawerLayout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater mMenuInflater = getMenuInflater();
@@ -32,21 +67,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == R.id.action_setting){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_setting) {
             Toast.makeText(MainActivity.this,
-                        "Settings", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.action_about){
-            Intent intent = new Intent(this, about.class);
-            startActivity(intent);
-        }
-        if(item.getItemId() == R.id.action_movies){
-            Intent intent = new Intent(this, list.class);
-            startActivity(intent);
+                    "Settings", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
+
     public void sendMessage(View view) {
         Intent intent = new Intent(this, submit.class);
         EditText input = findViewById(R.id.input);
