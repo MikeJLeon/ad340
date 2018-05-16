@@ -3,6 +3,8 @@ package com.example.mike.mikeleonad340;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -43,6 +45,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         EditText output = findViewById(R.id.input);
         output.setText(savedInput, TextView.BufferType.EDITABLE);
     }
+    public boolean phoneOnline(){
+        ConnectivityManager manager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert manager != null;
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean online = false;
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Network is present and connected
+            online = true;
+        }
+        return online;
+    }
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Intent intent;
@@ -53,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.action_movies:
                 intent = new Intent(this, list.class);
+                startActivity(intent);
+                break;
+            case R.id.action_liveCams:
+                intent = new Intent(this, Cams.class);
                 startActivity(intent);
                 break;
             case R.id.action_setting:
@@ -97,23 +115,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
     public boolean validateInput(String test) {
-        if(test.isEmpty() || test.trim().length() == 0) {
-            return false;
-        }else {
-            return true;
-        }
+        return !test.isEmpty() && test.trim().length() != 0;
     }
     public void movieList(View view) {
         Intent intent = new Intent(this, list.class);
         startActivity(intent);
     }
-    public void toast1(View view){
-        Context context = getApplicationContext();
-        String text = "Sup";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    public void liveCams(View view){
+        if(phoneOnline()) {
+            Intent intent = new Intent(this, Cams.class);
+            startActivity(intent);
+        }else{
+            Context context = getApplicationContext();
+            String text = "Network offline";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
+
+
     public void toast2(View view){
         Context context = getApplicationContext();
         String text = "Pizza is great";

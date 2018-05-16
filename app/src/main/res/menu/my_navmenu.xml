@@ -15,8 +15,12 @@
             app:showAsAction="never" />
 
         <item
-            android:id="@+id/action_movies"
+            android:id="@+id/action_liveCams"
             android:icon="@drawable/info_video"
+            android:title="@string/live_cams" />
+        <item
+            android:id="@+id/action_movies"
+            android:icon="@drawable/info_movies"
             android:title="@string/menu_action_movies"
             app:showAsAction="never" />
 </menu>

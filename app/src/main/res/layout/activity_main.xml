@@ -103,8 +103,8 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="toast1"
-                android:text="@string/toast1"
+                android:onClick="liveCams"
+                android:text="@string/cams"
                 app:layout_column="2"
                 app:layout_row="1" />
 
@@ -129,13 +129,14 @@
         </android.support.v7.widget.GridLayout>
 
     </android.support.constraint.ConstraintLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:visibility="gone"
         app:headerLayout="@layout/my_navheader"
-        app:menu="@menu/my_navmenu"
-        android:layout_gravity="start">
-    </android.support.design.widget.NavigationView>
+        app:menu="@menu/my_navmenu"/>
 
 </android.support.v4.widget.DrawerLayout>
