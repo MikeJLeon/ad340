@@ -112,8 +112,8 @@
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="toast2"
-                android:text="@string/toast2"
+                android:onClick="MapActivity"
+                android:text="@string/maps"
                 app:layout_column="1"
                 app:layout_row="2" />
 

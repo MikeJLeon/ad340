@@ -1,5 +1,6 @@
 package com.example.mike.mikeleonad340;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +22,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static final String EXTRA_MESSAGE = "com.example.mike.MESSAGE";
@@ -36,7 +41,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, mToolBar, R.string.openDescription, R.string.closeDescription);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        if(isServicesOk()){
+            Context context = getApplicationContext();
+            String text = "Services Okay";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //Grab stored input if exists
@@ -44,6 +55,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String savedInput = inputPrefs.getString("input", "");
         EditText output = findViewById(R.id.input);
         output.setText(savedInput, TextView.BufferType.EDITABLE);
+    }
+    public boolean isServicesOk() {
+        Log.d("Main Activity", "isServicesOk: checking version");
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+        if(available == ConnectionResult.SUCCESS){
+            Log.d("Main Activity", "Google services is working");
+            return true;
+        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            Log.d("Main Activity", "Google services had error but its fixable");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, 9001);
+            dialog.show();
+        }else{
+            Toast.makeText(this, "Cant make map requests", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return false;
     }
     public boolean phoneOnline(){
         ConnectivityManager manager =
@@ -135,12 +162,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public void toast2(View view){
-        Context context = getApplicationContext();
-        String text = "Pizza is great";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    public void MapActivity(View view){
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
     }
     public void toast3(View view){
         Context context = getApplicationContext();

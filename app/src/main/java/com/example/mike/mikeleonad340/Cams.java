@@ -40,7 +40,6 @@ public class Cams extends AppCompatActivity {
     public String id;
     public String description;
     public String type;
-    public String img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

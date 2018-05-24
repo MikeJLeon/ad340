@@ -37,4 +37,6 @@
     <string name="camaddress">camAddress</string>
     <string name="traffic_cams">Traffic Cams</string>
     <string name="live_cams">Live Cams</string>
+    <string name="googleApi">AIzaSyCf1BEc5-DnMAPhngRHrPR1ayS_hsoRNN4</string>
+    <string name="maps">Maps</string>
 </resources>
